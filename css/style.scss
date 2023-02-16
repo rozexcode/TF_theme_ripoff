@@ -30,6 +30,7 @@ header {
   background-color: rgba(39, 39, 39, 0.754);
   position: fixed;
   transition: all 0.3s ease;
+  z-index: 1000;
 }
 
 header:hover .section__1 {
@@ -182,12 +183,17 @@ nav {
     justify-content: center;
     list-style-type: none;
 
+    li span {
+      cursor: pointer;
+    }
+
     li::after {
       content: "";
       border-bottom: 3px solid $color-pink;
       width: 30px;
       display: inline;
       position: absolute;
+      z-index: 1;
       transform: rotate(-70deg) translate(-5px, 10px);
     }
 
@@ -197,6 +203,10 @@ nav {
   }
 }
 
+.filter--active {
+  color: $color-pink;
+}
+
 .section__1__photos {
   margin-top: 70px;
   display: grid;
@@ -204,44 +214,69 @@ nav {
   grid-template-rows: 3;
 
   .photo {
-    height: 20rem;
+    height: 30rem;
     border: 1px solid black;
+    vertical-align: middle;
+    font-size: 50px;
+    background-color: lightgray;
+    opacity: 1;
+    transition: all 0.5s ease;
   }
 }
 
+.visually-hidden {
+  opacity: 0 !important;
+  transform: scale(0);
+  transition: all 1s ease;
+  visibility: hidden;
+}
+
+.hidden {
+  display: none;
+}
+
+// footer
+
 footer {
   margin-top: 10rem;
-  height: 10rem;
+  height: 7rem;
   background-color: $color-pink;
   text-align: center;
   position: relative;
 
-  // &::before {
-  //   content: "";
-  //   width: 0;
-  //   height: 0;
-  //   border-bottom: 100px solid $color-pink;
-  //   border-right: 50vw solid transparent;
-  //   position: absolute;
-  //   left: 0;
-  //   top: -100px;
-  // }
+  &::before {
+    content: "";
+    width: 0;
+    height: 0;
+    border-bottom: 100px solid $color-pink;
+    border-right: 50vw solid transparent;
+    position: absolute;
+    left: 0;
+    top: -100px;
+  }
 
-  // &::after {
-  //   content: "";
-  //   width: 0;
-  //   height: 0;
-  //   border-bottom: 100px solid $color-pink;
-  //   border-left: 50vw solid transparent;
-  //   position: absolute;
-  //   top: -100px;
-  //   right: 0;
-  // }
+  &::after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-bottom: 100px solid $color-pink;
+    border-left: 50vw solid transparent;
+    position: absolute;
+    top: -100px;
+    right: 0;
+  }
 
-  span {
-    display: block;
-    text-align: center;
-    margin: auto;
-    color: white;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  color: rgb(199, 199, 199);
+
+  p {
+    padding: 0;
+    margin: 0;
+  }
+  a {
+    color: inherit;
   }
 }
