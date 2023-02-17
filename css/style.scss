@@ -88,6 +88,7 @@ nav {
 
 .section__intro {
   position: relative;
+  width: 100%;
   z-index: -10;
   color: white;
   transition: color 1s ease, background-color 1s ease;
@@ -152,7 +153,7 @@ nav {
 #background__intro__img {
   background-image: url("../img/background1.jpg");
   min-height: 100vh;
-  min-width: 100vw;
+  width: 100%;
 
   pointer-events: initial;
   background-attachment: fixed;
@@ -214,25 +215,48 @@ nav {
   grid-template-rows: 3;
 
   .photo {
-    height: 30rem;
-    border: 1px solid black;
+    // border: 1px solid black;
     vertical-align: middle;
     font-size: 50px;
     background-color: lightgray;
     opacity: 1;
-    transition: all 0.5s ease;
+    transition: all 0.3s ease;
+    object-fit: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+
+    img {
+      aspect-ratio: 0.9/1;
+      max-width: 100%;
+      object-fit: cover;
+      padding: 0;
+      margin: 0;
+      // object-position: -20% 0;
+    }
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.9);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(80%);
+      -webkit-backdrop-filter: blur(1.8px);
+    }
   }
 }
 
 .visually-hidden {
   opacity: 0 !important;
   transform: scale(0);
-  transition: all 1s ease;
+  transition: all 0.3s ease;
   visibility: hidden;
 }
 
 .hidden {
-  display: none;
+  // display: none;
+}
+
+.temporary-transition {
+  // transition: all 0s !important;
 }
 
 // footer

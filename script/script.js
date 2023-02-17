@@ -44,15 +44,21 @@ const section1ImgContainer = document.querySelector(".section__1__photos");
 const section1Imgs = document.querySelectorAll(".photo");
 const imgFilterNavSelectors = document.querySelectorAll(".filter");
 let selectedFilter = "all";
+let toBeShown;
 
 const displayImgs = function (type) {
   if (type === "all") {
-    section1Imgs.forEach((img) => img.classList.remove("hidden"));
+    section1Imgs.forEach((img) => {
+      img.classList.remove("hidden");
+    });
     setTimeout(function () {
-      section1Imgs.forEach((img) => img.classList.remove("visually-hidden"));
+      section1Imgs.forEach((img) => {
+        img.classList.remove("visually-hidden");
+        img.style.transform = `translate(0%, 0%)`;
+      });
     }, 300);
   } else {
-    let toBeShown = Array.prototype.filter.call(section1Imgs, (el) =>
+    toBeShown = Array.prototype.filter.call(section1Imgs, (el) =>
       el.classList.contains(type)
     );
     let toBeHidden = Array.prototype.filter.call(
@@ -60,13 +66,43 @@ const displayImgs = function (type) {
       (el) => !el.classList.contains(type)
     );
 
-    section1Imgs.forEach((img) => img.classList.add("visually-hidden"));
+    section1Imgs.forEach((img) => {
+      img.classList.add("visually-hidden");
+    });
     toBeShown.forEach((img) => img.classList.remove("visually-hidden"));
     toBeShown.forEach((img) => img.classList.remove("hidden"));
-    console.log(toBeHidden);
+    // console.log(toBeHidden);
+
     setTimeout(function () {
       toBeHidden.forEach((img) => img.classList.add("hidden"));
     }, 300);
+
+    toBeShown.forEach((img, i) => {
+      img.style.transform = `translate(${
+        getHorizontal(Number(img.dataset.num), i) * 100
+      }%, ${getVertical(Number(img.dataset.num), i) * -100}%)`;
+
+      getHorizontal(img.dataset.num, i);
+      getVertical(img.dataset.num, i);
+
+      // setTimeout(function () {
+      //   section1Imgs.forEach((img) => {
+      //     img.style.transform = `translate(0%, 0%)`;
+      //     img.classList.add("temporary-transition");
+      //     setTimeout(() => {
+      //       img.classList.remove("temporary-transition");
+      //     }, 0);
+      //   });
+      // }, 300);
+
+      // setTimeout(function () {
+      //   section1Imgs.forEach((img) => {
+      //     img.style.transition = `all 0.3s ease`;
+      //   });
+      // }, 2000);
+    });
+
+    console.log(toBeShown);
   }
 };
 
@@ -101,9 +137,7 @@ const imgPos = section1Imgs[0].getBoundingClientRect();
 console.log(imgPos);
 console.log(height, topPos, width);
 
-const transfromImg = function (imgNum, desPos) {
-  // desPos = desired position placeholder for an image
-
+const getHorizontal = function (imgNum, desPos) {
   let horizontal;
   if (imgNum % 2 === 0) {
     horizontal = desPos % 2 === 0 ? 0 : 1;
@@ -111,7 +145,10 @@ const transfromImg = function (imgNum, desPos) {
     horizontal = desPos % 2 === 0 ? -1 : 0;
   }
   console.log(`horizontal: ${horizontal * 100}%`);
+  return horizontal;
+};
 
+const getVertical = function (imgNum, desPos) {
   let vertical;
 
   const result = (imgNum - desPos) / 2;
@@ -123,14 +160,10 @@ const transfromImg = function (imgNum, desPos) {
       : (vertical = Math.ceil(result));
 
   console.log(`vertical: ${vertical * 100}%`);
+  return vertical;
 };
 
-transfromImg(6, 1);
-
-// section1Imgs[5].style.transform = `translate(-100%, -200%)`;
-
 /*
-
 
 
 IMGS
