@@ -3,6 +3,17 @@
 $color-pink: rgb(198, 37, 128);
 $color-gray: rgb(39, 39, 39);
 
+html,
+body {
+  overflow-x: hidden;
+}
+
+.loading {
+  opacity: 0;
+  background-color: $color-gray;
+  transition: all 1s ease;
+}
+
 .nightMode {
   background-color: $color-gray !important;
   color: white !important;
@@ -21,6 +32,17 @@ body {
   background-color: #fff;
   overflow-x: hidden;
   transition: color 1s ease, background-color 1s ease;
+  animation: fadeInAnimation ease 2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 header {
@@ -78,6 +100,22 @@ nav {
       }
     }
   }
+
+  // .nav__burger {
+  //   visibility: hidden;
+  // }
+}
+
+#switchMode {
+  color: $color-pink;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    background: none;
+    cursor: pointer;
+    transform: rotate(10deg);
+    transition: transform 0.2s ease;
+  }
 }
 
 .header--active {
@@ -95,8 +133,6 @@ nav {
 
   @mixin triangle {
     content: "";
-    width: 100%;
-    height: 50%;
     width: 0;
     height: 0;
     border-bottom: 100px solid;
@@ -127,6 +163,7 @@ nav {
   transform: translate(-50%, -50%);
   pointer-events: initial;
   z-index: 1000;
+  text-align: center;
   // text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
   //   1px 1px 0 #000;
 }
@@ -139,7 +176,7 @@ nav {
   width: 18px;
   top: 80vh;
   cursor: pointer;
-  z-index: 1000;
+  z-index: 10;
   position: absolute;
   left: 50%;
   top: 85%;
@@ -152,10 +189,11 @@ nav {
 
 #background__intro__img {
   background-image: url("../img/background1.jpg");
-  min-height: 100vh;
-  width: 100%;
+  min-height: 100svh;
+  width: 101%;
 
   pointer-events: initial;
+  background-size: cover;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -219,12 +257,45 @@ nav {
     vertical-align: middle;
     font-size: 50px;
     background-color: lightgray;
-    opacity: 1;
+    // opacity: 1;
     transition: all 0.3s ease;
     object-fit: none;
     padding: 0;
     margin: 0;
     display: flex;
+    position: relative;
+
+    .photo__details {
+      position: absolute;
+      color: white;
+      font-size: 2rem;
+      text-align: center;
+      left: 0;
+      right: 0;
+      margin: auto;
+      align-items: center;
+      top: 50%;
+      transform: translateY(10%);
+      opacity: 0;
+      transition: transform 0.3s step-end, opacity 0.3s ease;
+      z-index: 10;
+
+      div {
+        margin-top: 0.6rem;
+      }
+
+      i {
+        font-size: 1.5rem;
+        background-color: $color-pink;
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+    }
 
     img {
       aspect-ratio: 0.9/1;
@@ -235,13 +306,28 @@ nav {
       // object-position: -20% 0;
     }
 
-    &:hover {
-      background: rgba(0, 0, 0, 0.9);
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-      backdrop-filter: blur(80%);
-      -webkit-backdrop-filter: blur(1.8px);
+    &::after {
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1;
+      opacity: 0;
+      transition: opacity 0.4s ease;
     }
   }
+}
+
+.photo:hover:after {
+  opacity: 1;
+}
+
+.photo:hover .photo__details {
+  opacity: 1;
+  transform: translateY(-50%);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition-delay: 0.7s;
 }
 
 .visually-hidden {
@@ -252,12 +338,12 @@ nav {
 }
 
 .hidden {
-  // display: none;
+  display: none;
 }
 
-.temporary-transition {
-  // transition: all 0s !important;
-}
+// .temporary-transition {
+//   transition: all 0s !important;
+// }
 
 // footer
 
@@ -304,3 +390,147 @@ footer {
     color: inherit;
   }
 }
+
+@media (max-width: 1250px) {
+  .section__intro__text {
+    font-size: 4rem;
+    overflow-x: hidden;
+  }
+
+  #section__1 {
+    max-width: 80vw;
+  }
+}
+
+@media (max-width: 900px) {
+  #section__1 #filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    justify-content: space-between;
+  }
+  nav li {
+    position: fixed;
+  }
+
+  .burger__container {
+    display: flex;
+  }
+
+  .nav__links {
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 82px;
+    background-color: rgba(39, 39, 39, 0.95);
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    z-index: 20;
+    align-items: center;
+    padding-top: 2rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+
+    a,
+    li {
+      margin: 4.5vh 0;
+      transform: translate(-50%, -50%);
+      font-size: 3rem;
+      z-index: 10;
+    }
+
+    #switchMode {
+      transform: unset !important;
+      left: -28px;
+      &:hover {
+        transform: unset !important;
+      }
+    }
+  }
+}
+
+.nav__links--active {
+  transform: translateY(0%);
+  transition: transform 0.3s ease;
+}
+
+@media (max-width: 600px) {
+  .section__1__photos {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 767px) {
+  .burger__container {
+    display: none;
+  }
+}
+
+.burger__container {
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: flex-start;
+  margin-right: 50px;
+}
+
+.nav__burger {
+  position: relative;
+
+  @mixin burger-line {
+    position: absolute;
+    content: "";
+    width: 35px;
+    height: 4px;
+    border-radius: 3px;
+    background-color: $color-pink;
+    padding: 0;
+    margin: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease, top 0.3s ease,
+      bottom 0.3s ease;
+  }
+
+  #burger__line-down {
+    @include burger-line;
+    opacity: 1;
+    top: 10px;
+  }
+  #burger__line-mid {
+    @include burger-line;
+    opacity: 1;
+  }
+  #burger__line-top {
+    @include burger-line;
+    opacity: 1;
+    bottom: 7px;
+  }
+}
+
+.nav__burger--active {
+  #burger__line-mid {
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  #burger__line-down {
+    top: 0;
+    transform: rotate(-45deg);
+    transition: transform 0.3s ease, opacity 0.3s ease, top 0.3s ease;
+  }
+
+  #burger__line-top {
+    top: 0;
+    transform: rotate(45deg);
+    transition: transform 0.3s ease, opacity 0.3s ease, bottom 0.3s ease;
+  }
+}
+
+// added mobile responsive
+// added project details on hover on images
