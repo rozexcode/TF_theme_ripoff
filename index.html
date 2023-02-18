@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="css/style.css" />
 
-    <title>Document</title>
+    <title>TF Theme Ripoff</title>
   </head>
   <body class="">
     <header class="header--active">
@@ -23,8 +23,18 @@
           <a href="#"><li>Work</li></a>
           <a href="#"><li>Blog</li></a>
           <a href="#"><li>Contact</li></a>
+          <a
+            ><li id="switchMode"><i class="fa-regular fa-lightbulb"></i></li
+          ></a>
         </ul>
-        <button id="switchMode">Night</button>
+
+        <div class="burger__container">
+          <div class="nav__burger">
+            <div id="burger__line-top"></div>
+            <div id="burger__line-mid"></div>
+            <div id="burger__line-down"></div>
+          </div>
+        </div>
       </nav>
     </header>
 
@@ -67,12 +77,66 @@
       </div>
 
       <div class="section__1__photos">
-        <div class="photo web-design">0</div>
-        <div class="photo graphic-design">1</div>
-        <div class="photo graphic-design">2</div>
-        <div class="photo web-design">3</div>
-        <div class="photo development">4</div>
-        <div class="photo photography">5</div>
+        <div class="photo web-design" data-num="0">
+          <img src="img/photo (1).jpg" alt="photo1" srcset="" />
+          <span class="photo__details">
+            Project Details
+            <div>
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <i class="fa-solid fa-link"></i>
+            </div>
+          </span>
+        </div>
+        <div class="photo graphic-design" data-num="1">
+          <img src="img/photo (2).jpg" alt="photo2" srcset="" />
+          <span class="photo__details">
+            Project Details
+            <div>
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <i class="fa-solid fa-link"></i>
+            </div>
+          </span>
+        </div>
+        <div class="photo graphic-design" data-num="2">
+          <img src="img/photo (3).jpg" alt="photo3" srcset="" />
+          <span class="photo__details">
+            Project Details
+            <div>
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <i class="fa-solid fa-link"></i>
+            </div>
+          </span>
+        </div>
+        <div class="photo web-design" data-num="3">
+          <img src="img/photo (4).jpg" alt="photo4" srcset="" />
+          <span class="photo__details">
+            Project Details
+            <div>
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <i class="fa-solid fa-link"></i>
+            </div>
+          </span>
+        </div>
+        <div class="photo development" data-num="4">
+          <img src="img/photo (5).jpg" alt="photo5" srcset="" />
+          <span class="photo__details">
+            Project Details
+            <div>
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <i class="fa-solid fa-link"></i>
+            </div>
+          </span>
+        </div>
+        <div class="photo photography" data-num="5">
+          <img src="img/photo (6).jpg" alt="photo6" srcset="" />
+          <span class="photo__details">
+            Project Details
+            <div>
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <i class="fa-solid fa-link"></i>
+            </div>
+          </span>
+        </div>
       </div>
     </section>
 
@@ -81,11 +145,18 @@
 
       <a
         href="https://preview.themeforest.net/item/leonardo-personal-template/full_screen_preview/21558840?_ga=2.204043986.317591851.1676289279-646764458.1676289279"
+        target="_blank"
         >link to original</a
       >
     </footer>
 
     <script src="script/script.js"></script>
     <script src="script/nav.js"></script>
+    <script src="script/imageFilter.js"></script>
+
+    <script
+      src="https://kit.fontawesome.com/f9d7b44eed.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
