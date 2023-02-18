@@ -15,6 +15,5 @@ The only resources and solutions I used were from MDN and W3.
 ![alt projectPreviewImage](https://github.com/rozexcode/TF_theme_ripoff/blob/master/Preview/project1.jpg?raw=true)
 ![alt projectPreviewImage](https://github.com/rozexcode/TF_theme_ripoff/blob/master/Preview/project2.jpg?raw=true)
 ![alt projectPreviewImage](https://github.com/rozexcode/TF_theme_ripoff/blob/master/Preview/project3.jpg?raw=true)
-![alt projectPreviewImage](https://github.com/rozexcode/TF_theme_ripoff/blob/master/Preview/project4.jpg?raw=true)
 
 </p>
