@@ -10,10 +10,16 @@ The vast majority of the code is written by me. I haven't look into the sourceco
 That's why some solutions are probably weird or non-practical but those were my attepmts of recreating stuff without libraries or even someone else's code.
 The only resources and solutions I used were from MDN and W3. 
 
-<p align="center">
+<br>
+<br>
+<br>
+
+<h2 align="center">Preview</h2>
 
 ![alt projectPreviewImage](https://github.com/rozexcode/TF_theme_ripoff/blob/master/Preview/project1.jpg?raw=true)
+<br>
 ![alt projectPreviewImage](https://github.com/rozexcode/TF_theme_ripoff/blob/master/Preview/project2.jpg?raw=true)
+<br>
 ![alt projectPreviewImage](https://github.com/rozexcode/TF_theme_ripoff/blob/master/Preview/project3.jpg?raw=true)
 
-</p>
+
