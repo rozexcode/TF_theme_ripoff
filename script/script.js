@@ -1,4 +1,5 @@
 "use strict";
+
 const body = document.querySelector("body");
 const nav = document.querySelector("header");
 const switchModeButton = document.querySelector("#switchMode");
@@ -9,8 +10,6 @@ const section1 = document.querySelector("#section__1");
 const section1Classes = section1.classList;
 
 const goDown = document.querySelector(".go-down");
-
-// loadPage
 
 // goDown
 const handler = function () {
